@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Connexion{% endblock %}
+
+{% block body %}
+
+<div id = "formConexion">
+{{ form_start(form) }}
+{{ form_widget(form) }}
+{{ form_end(form) }}
+
+<a href="{{path("register")}}"> Inscription</a>
+</div>
+{% endblock %}

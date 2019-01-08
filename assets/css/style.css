@@ -1,0 +1,70 @@
+body{
+    
+    background-color: #1c1818;
+}
+form, input, label {
+    color: white ;
+}
+table, tr {
+    color: white ;
+}
+th {
+    color: #f41212 ;
+}
+h1 {
+    color: white ;
+}
+#formConexion {
+    position: absolute ;
+    width:200px;
+    height:100spx;
+    margin:100px 100px 50px 100px 
+    
+}
+form{
+     position: relative;
+}
+#contenu{
+     position: relative;
+   
+}
+
+p {
+    font-size: 20px ;
+    font-family: serif;
+    color: white;
+    margin:50px 100px 50px 100px ; 
+     
+}
+#pAcc{
+    font-size: 20px ;
+    font-family: serif;
+    color: white;
+    
+    
+}
+#img1{
+     
+}
+
+#p1{
+    
+}
+
+nav {
+    background-color: #961414;
+        padding:15px;
+        text-align: center;
+}
+
+nav ul {
+    display:inline;
+        list-style-type: none;
+}
+
+nav li {
+    display:inline;
+        padding: 5px 5px 5px 5px;
+        margin:0;
+        color:#9ca1e2;
+}
