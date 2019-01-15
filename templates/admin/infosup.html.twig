@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Information Suplémentaire{% endblock %}
+
+{% block body %}
+    <h1>Information Suplémentaire</h1>
+{{ form_start(form) }}
+  <div class="form-row">
+    <div class="form-group col-md-2">
+      
+      {{form_row(form.accident, {'attr': {'class': 'form-control','id':'inputaccident', 'placeholder':'Accident'}}) }}
+    </div>
+    
+ 
+{{ form_end(form) }}
+   
+
+    <a href="{{ path('adherents') }}">back to list</a>
+
+{% endblock %}

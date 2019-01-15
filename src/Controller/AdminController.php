@@ -2,7 +2,9 @@
 
 namespace App\Controller;
 use App\Entity\Adherent;
+use App\Entity\Informationsup;
 use App\Form\AdherentType;
+use App\Form\InformationsupType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
@@ -35,15 +37,26 @@ class AdminController extends AbstractController
         return $this->render('admin/adherents.html.twig', ['adherents' => $adherents]);
     }
     /**
-     * @Route("/infosup", name="infosup")
+     * @Route(" {idAdherent}/infosup_edit", name="infosup_edit")
      */
-    public function infosupAction(Request $request,SessionInterface $session)
+    public function infosupAction(Request $request,Adherent $adherent)
     {
-        return $this->render('admin/infosup.html.twig', [
-            'controller_name' => 'AccueilController',
-        ]);
+        $informationsup = new Informationsup();
+        $form = $this->createForm(InformationsupType::class, $informationsup);
+          
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+          
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($informationsup);
+           
+           $adherent->setInfosup($informationsup);
+           $entityManager->flush();
+
+       }
+           return $this->render('admin/infosup.html.twig', ['form' => $form->createView()]    ) ;
+    }
     
-}
     
 
     /**
@@ -53,6 +66,7 @@ class AdminController extends AbstractController
     {
         return $this->render('admin/show.html.twig', ['adherent' => $adherent]);
     }
+    
 
     /**
      * @Route("/{idAdherent}/edit", name="adherent_edit", methods={"GET","POST"})
@@ -63,6 +77,8 @@ class AdminController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+
             $this->getDoctrine()->getManager()->flush();
 
             return $this->redirectToRoute('adherents', ['idAdherent' => $adherent->getIdAdherent()]);

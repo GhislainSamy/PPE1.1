@@ -20,6 +20,7 @@
                 <th>Ville</th>
                 <th>Email</th>
                 <th>DateCreation</th>
+                 <th>Informations Sup</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -38,6 +39,11 @@
                 <td>{{ adherent.ville }}</td>
                 <td>{{ adherent.email }}</td>
                 <td>{{ adherent.dateCreation ? adherent.dateCreation|date('Y-m-d H:i:s') : '' }}</td>
+                 <td>
+                 
+                    <a href="{{ path('infosup_edit', {'idAdherent': adherent.idAdherent}) }}">edit</a>
+            
+                </td>
                 <td>
                     <a href="{{ path('adherent_show', {'idAdherent': adherent.idAdherent}) }}">show</a>
                     <a href="{{ path('adherent_edit', {'idAdherent': adherent.idAdherent}) }}">edit</a>
