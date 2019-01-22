@@ -74,6 +74,7 @@ $form->handleRequest($request);
             // 4) save the Adherent!
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($adherent);
+            
             $entityManager->flush();
             // ... do any other work - like sending them an email, etc
             // maybe set a "flash" success message for the user

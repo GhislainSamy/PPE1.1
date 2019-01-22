@@ -8,7 +8,7 @@
     <table class="table">
         <thead>
             <tr>
-                <th>IdAdherent</th>
+ 
                 <th>Sexe</th>
                 <th>Nom</th>
                 <th>Prenom</th>
@@ -27,7 +27,7 @@
         <tbody>
         {% for adherent in adherents %}
             <tr>
-                <td>{{ adherent.idAdherent }}</td>
+
                 <td>{{ adherent.sexe }}</td>
                 <td>{{ adherent.nom }}</td>
                 <td>{{ adherent.prenom }}</td>
@@ -41,12 +41,27 @@
                 <td>{{ adherent.dateCreation ? adherent.dateCreation|date('Y-m-d H:i:s') : '' }}</td>
                  <td>
                  
-                    <a href="{{ path('infosup_edit', {'idAdherent': adherent.idAdherent}) }}">edit</a>
-            
+                   
+{% if adherent.infosup is not null %}
+
+ <a href="{{ path('infosup_show', {'idAdherent': adherent.idAdherent}) }}">Voir</a>
+ {% endif %}
+{%  if adherent.infosup is null  %}
+<a href="{{ path('infosup_edit', {'idAdherent': adherent.idAdherent}) }}">Créer sup</a>
+
+{% endif %}
+
+ 
+
+
+
+
+
+                    
                 </td>
                 <td>
-                    <a href="{{ path('adherent_show', {'idAdherent': adherent.idAdherent}) }}">show</a>
-                    <a href="{{ path('adherent_edit', {'idAdherent': adherent.idAdherent}) }}">edit</a>
+                    <a href="{{ path('adherent_show', {'idAdherent': adherent.idAdherent}) }}">Voir/</a>
+                    <a href="{{ path('adherent_edit', {'idAdherent': adherent.idAdherent}) }}">Modifier</a>
                 </td>
             </tr>
         {% else %}

@@ -37,7 +37,7 @@ class AdminController extends AbstractController
         return $this->render('admin/adherents.html.twig', ['adherents' => $adherents]);
     }
     /**
-     * @Route(" {idAdherent}/infosup_edit", name="infosup_edit")
+     * @Route(" /adherent/{idAdherent}/infosup_edit", name="infosup_edit")
      */
     public function infosupAction(Request $request,Adherent $adherent)
     {
@@ -56,11 +56,11 @@ class AdminController extends AbstractController
        }
            return $this->render('admin/infosup.html.twig', ['form' => $form->createView()]    ) ;
     }
-    
+
     
 
     /**
-     * @Route("/{idAdherent}", name="adherent_show", methods={"GET"})
+     * @Route("/adherent/{idAdherent}", name="adherent_show", methods={"GET"})
      */
     public function show(Adherent $adherent): Response
     {
@@ -69,7 +69,7 @@ class AdminController extends AbstractController
     
 
     /**
-     * @Route("/{idAdherent}/edit", name="adherent_edit", methods={"GET","POST"})
+     * @Route("/adherent/{idAdherent}/edit", name="adherent_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, Adherent $adherent): Response
     {
@@ -90,8 +90,23 @@ class AdminController extends AbstractController
         ]);
     }
 
+
+
+
+/**
+     * @Route("/adherent/{idAdherent}/show", name="infosup_show", methods={"GET"})
+     */
+    public function infosupshow(Adherent $adherent): Response
+    {
+        return $this->render('admin/infosup_show.html.twig', ['adherent' => $adherent]);
+    }
+
+
+
+
+
     /**
-     * @Route("/{idAdherent}", name="adherent_delete", methods={"DELETE"})
+     * @Route("/adherent/{idAdherent}", name="adherent_delete", methods={"DELETE"})
      */
     public function delete(Request $request, Adherent $adherent): Response
     {

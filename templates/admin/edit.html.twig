@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit Adherent{% endblock %}
+{% block title %}Modifier Adherent{% endblock %}
 
 {% block body %}
-    <h1>Edit Adherent</h1>
+    <h1>Modifier Adherent</h1>
 {{ form_start(form) }}
   <div class="form-row">
     <div class="form-group col-md-2">
@@ -63,12 +63,12 @@
   
   </div>
 </div>
-  {{form_row(form.save, {'label': 'Update' ,'attr': {'class': 'btn btn-primary'}}) }}
+  {{form_row(form.save, {'label': 'Mettre à jour' ,'attr': {'class': 'btn btn-primary'}}) }}
   
 {{ form_end(form) }}
    
 
-    <a href="{{ path('adherents') }}">back to list</a>
+    <a href="{{ path('adherents') }}">Retourner a la liste</a>
 
     {{ include('admin/_delete_form.html.twig') }}
 {% endblock %}
