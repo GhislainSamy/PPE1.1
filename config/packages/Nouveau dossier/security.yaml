@@ -1,15 +1,21 @@
 security:
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
-    providers:
-        in_memory: 
-             memory:
-                users:
-                    ghislain:
-                        password: $2y$13$s3cZQrYyXR6w40Aj3kX1WuRUXFYpd44Y5tyVtzqC9R4/YlGVdohKy  #aze
-                        roles: ROLE_USER
-                    admin:
-                        password: $2y$13$s3cZQrYyXR6w40Aj3kX1WuRUXFYpd44Y5tyVtzqC9R4/YlGVdohKy  #aze
-                        roles: ROLE_ADMIN
+        providers:
+        # used to reload user from session & other features (e.g. switch_user)
+            app_user_provider:
+              entity:
+                class: App\Entity\User
+                property: username
+
+      #  in_memory: 
+       #      memory:
+       #         users:
+        #            ghislain:
+        #                password: $2y$13$s3cZQrYyXR6w40Aj3kX1WuRUXFYpd44Y5tyVtzqC9R4/YlGVdohKy  #aze
+        #                roles: ROLE_USER
+        #            admin:
+        #                password: $2y$13$s3cZQrYyXR6w40Aj3kX1WuRUXFYpd44Y5tyVtzqC9R4/YlGVdohKy  #aze
+        #                roles: ROLE_ADMIN
 
     encoders:
          Symfony\Component\Security\Core\User\User: bcrypt

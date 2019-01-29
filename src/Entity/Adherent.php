@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Adherent
  *
- * @ORM\Table(name="adherent", indexes={@ORM\Index(name="infosup", columns={"infosup"})})
+ * @ORM\Table(name="adherent", indexes={@ORM\Index(name="iduser", columns={"iduser"}), @ORM\Index(name="infosup", columns={"infosup"})})
  * @ORM\Entity
  */
 class Adherent
@@ -43,9 +43,9 @@ class Adherent
     private $prenom;
 
     /**
-     * @var string|null
+     * @var \DateTime|null
      *
-     * @ORM\Column(name="datenaiss", type="date", length=1000, nullable=true)
+     * @ORM\Column(name="datenaiss", type="date", nullable=true)
      */
     private $datenaiss;
 
@@ -114,6 +114,16 @@ class Adherent
      * })
      */
     private $infosup;
+
+    /**
+     * @var \User
+     *
+     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="iduser", referencedColumnName="id")
+     * })
+     */
+    private $iduser;
 
     public function getIdAdherent(): ?int
     {
@@ -276,17 +286,17 @@ class Adherent
         return $this;
     }
 
-    
- 
+    public function getIduser(): ?User
+    {
+        return $this->iduser;
+    }
 
-    
+    public function setIduser(?User $iduser): self
+    {
+        $this->iduser = $iduser;
 
-
-   
-
-  
-
-    
+        return $this;
+    }
 
 
 }
