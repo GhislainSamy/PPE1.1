@@ -42,11 +42,11 @@ class AdminController extends AbstractController
     public function infosupAction(Request $request,Adherent $adherent)
     {
         $informationsup = new Informationsup();
-        $form = $this->createForm(InformationsupType::class, $informationsup);
+        $form = $this->createForm(InformationsupType::class, $adherent->getInfosup());
           
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-          
+            $informationsup = $form->getData();
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($informationsup);
            
