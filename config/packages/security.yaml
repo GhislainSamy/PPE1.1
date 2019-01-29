@@ -24,6 +24,9 @@ security:
                 # Securisation des formulaires
                 # La page par defaut apres une connexion reussie
                 default_target_path: accueil
+            guard:
+                authenticators:
+                    - App\Security\LoginFormAuthenticator
 
                     
 
