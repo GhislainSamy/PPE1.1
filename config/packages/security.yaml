@@ -28,7 +28,9 @@ security:
                 authenticators:
                     - App\Security\LoginFormAuthenticator
 
-                    
+            logout:
+                path: app_logout
+                target: accueil        
 
             # activate different ways to authenticate
 

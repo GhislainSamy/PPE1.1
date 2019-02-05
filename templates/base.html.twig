@@ -16,18 +16,22 @@
       <li class="nav-item active">
         <a class="nav-link" id= "acc" href="{{path('accueil')}}"> Accueil <span class="sr-only">(current)</span></a>
       </li>
-      {% if app.session.get('adherent') is not null %} 
+        {% if is_granted('ROLE_USER') %}
         <li class="nav-item active">
-        <a class="nav-link" id= "acc" href="{{path('register')}}"> Inscription <span class="sr-only">(current)</span></a>
+        <a class="nav-link" id= "acc" href="{{path('register')}}"> Inscription de sportif<span class="sr-only">(current)</span></a>
+      </li>
+        <li class="nav-item active">
+        <a class="nav-link" id= "acc" href="{{path('register')}}"> Liste Profil sportif <span class="sr-only">(current)</span></a>
       </li>
           {% endif %}
-    {% if app.session.get('adherent') is  null %} 
+        {% if is_granted('ROLE_ADMINISTRATEUR') %}
+
         <li class="nav-item dropdown">
       <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         Adherents
       </a>
       <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-        <a class="dropdown-item" href="{{path('adherents')}}">Afficher</a>
+        <a class="dropdown-item" href="{{path('adherents')}}">Afficher tout les adherents</a>
        
         
       </div>
@@ -35,8 +39,11 @@
     
       {% endif %}
     </ul>
-   <a id="conn" class="nav-link" href="{{path('connecter')}}">Se connecter</a>
-   <a id="deconn" class="nav-link" href="{{path('deconnecter')}}">Se déconnecter</a>
+ {#  <a id="conn" class="nav-link" href="{{path('connecter')}}">Se connecter</a> #}
+    <a id="conn" class="nav-link" href="{{path('app_login')}}">Se connecter</a>
+  {#  <a id="deconn" class="nav-link" href="{{path('deconnecter')}}">Se déconnecter</a> #}
+  <a id="deconn" class="nav-link" href="{{path('app_logout')}}">Se déconnecter</a> 
+
   </div>
 </nav>
 <br>

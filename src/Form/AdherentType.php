@@ -28,7 +28,7 @@ class AdherentType extends AbstractType
             ->add('cp',TextType::class, array('label' => 'Code Postale'))
             ->add('ville',TextType::class, array('label' => 'Ville'))
             ->add('email',TextType::class, array('label' => 'Email'))
-            ->add('mdp',PasswordType::class, array('label' => 'Mot de Passe'))
+           /*  ->add('mdp',PasswordType::class, array('label' => 'Mot de Passe')) */
             ->add('dateCreation',DateTimeType::class, array('label' => 'Date de création'))
             ->add('save', SubmitType::class)
         ;
