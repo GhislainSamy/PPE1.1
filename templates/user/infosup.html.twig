@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Information Suplémentaire{% endblock %}
+
+{% block body %}
+    <h1>Information Suplémentaire</h1>
+{{ form_start(form) }}
+  <div class="form-row">
+    <div class="form-group col-md-2">
+      {{form_row(form.typeMailing, {'attr': {'class': 'form-control','id':'inputtypeMailing', 'placeholder':'Type Mailing'}}) }}
+           </div>
+        <div class="form-group col-md-2">
+      {{form_row(form.accident, {'attr': {'class': 'form-control','id':'inputaccident', 'placeholder':'Accident'}}) }}
+           </div>
+        <div class="form-group col-md-2">
+      {{form_row(form.droitimage, {'attr': {'class': 'form-control','id':'inputdroitimage', 'placeholder':'Droit a l image'}}) }}
+            </div>
+        <div class="form-group col-md-2">
+      {{form_row(form.infocomplem, {'attr': {'class': 'form-control','id':'inputinfocomplem', 'placeholder':'Info Complementaire'}}) }}
+           </div>
+        <div class="form-group col-md-2">
+      {{form_row(form.assurance, {'attr': {'class': 'form-control','id':'inputassurance', 'placeholder':'Assurance'}}) }}
+            </div>
+        <div class="form-group col-md-2">
+      {{form_row(form.optionassurance, {'attr': {'class': 'form-control','id':'inputoptionassurance', 'placeholder':'Option Assurance'}}) }}
+           </div>
+        <div class="form-group col-md-2">
+      {{form_row(form.typePaiement, {'attr': {'class': 'form-control','id':'inputtypePaiement', 'placeholder':'Type de payement'}}) }}
+            </div>
+        <div class="form-group col-md-2">
+      {{form_row(form.niveauTechnique, {'attr': {'class': 'form-control','id':'inputniveauTechnique', 'placeholder':'Niveau technique'}}) }}
+           </div>
+        <div class="form-group col-md-3">
+         {{form_row(form.dateCreation) }}
+           </div>
+        <div class="form-group col-md-2">
+      {{form_row(form.demandeFacture, {'attr': {'class': 'form-control','id':'inputdemandeFacture', 'placeholder':'Demande facture'}}) }}
+            </div>
+        <div class="form-group col-md-2">
+      {{form_row(form.passJeune, {'attr': {'class': 'form-control','id':'inputpassJeune', 'placeholder':'Pass Jeune'}}) }}
+          </div>
+       <div class="form-group col-md-2">
+      {{form_row(form.dossierComplet, {'attr': {'class': 'form-control','id':'inputdossierComplet', 'placeholder':'Dossier complet'}}) }}
+       </div>
+    
+    </div>
+    
+ 
+{{ form_end(form) }}
+   
+
+    <a href="{{ path('adherents') }}">Retour a la liste</a>
+
+{% endblock %}

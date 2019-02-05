@@ -65,7 +65,7 @@ $form->handleRequest($request);
         $adherent = new Adherent();
         $user = $this->get('security.token_storage')->getToken()->getUser();
         $form = $this->createForm(AdherentType::class, $adherent);
-        dump($user);
+      
         // 2) handle the submit (will only happen on POST)
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
