@@ -105,6 +105,18 @@ class Informationsup
      */
     private $dossierComplet;
 
+    /**
+     * @var \DateTime|null
+     *
+     * @ORM\Column(name="dateajout", type="datetime", nullable=true)
+     */
+    private $dateajout;
+    public function __construct()
+    {
+        $this->dateajout = new \DateTime();
+    }
+
+
     public function getIdInfosup(): ?int
     {
         return $this->idInfosup;
@@ -250,6 +262,18 @@ class Informationsup
     public function setDossierComplet(string $dossierComplet): self
     {
         $this->dossierComplet = $dossierComplet;
+
+        return $this;
+    }
+
+    public function getDateajout(): ?\DateTimeInterface
+    {
+        return $this->dateajout;
+    }
+
+    public function setDateajout(?\DateTimeInterface $dateajout): self
+    {
+        $this->dateajout = $dateajout;
 
         return $this;
     }

@@ -92,18 +92,22 @@ class Adherent
     private $email;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="mdp", type="string", length=1000, nullable=false)
-     */
-    private $mdp;
-
-    /**
      * @var \DateTime|null
      *
      * @ORM\Column(name="date_creation", type="datetime", nullable=true)
      */
     private $dateCreation;
+
+    /**
+     * @var \DateTime|null
+     *
+     * @ORM\Column(name="dateajout", type="datetime", nullable=true)
+     */
+    private $dateajout;
+    public function __construct()
+    {
+        $this->dateajout = new \DateTime();
+    }
 
     /**
      * @var \Informationsup
@@ -250,18 +254,6 @@ class Adherent
         return $this;
     }
 
-    public function getMdp(): ?string
-    {
-        return $this->mdp;
-    }
-
-    public function setMdp(string $mdp): self
-    {
-        $this->mdp = $mdp;
-
-        return $this;
-    }
-
     public function getDateCreation(): ?\DateTimeInterface
     {
         return $this->dateCreation;
@@ -270,6 +262,18 @@ class Adherent
     public function setDateCreation(?\DateTimeInterface $dateCreation): self
     {
         $this->dateCreation = $dateCreation;
+
+        return $this;
+    }
+
+    public function getDateajout(): ?\DateTimeInterface
+    {
+        return $this->dateajout;
+    }
+
+    public function setDateajout(?\DateTimeInterface $dateajout): self
+    {
+        $this->dateajout = $dateajout;
 
         return $this;
     }
