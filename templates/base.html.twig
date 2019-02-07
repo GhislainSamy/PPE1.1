@@ -39,14 +39,21 @@
      <li class="nav-item active">
         <a class="nav-link" id= "acc" href="{{path('accueil')}}"> Ajout User <span class="sr-only">(current)</span></a>
       </li>
+          <li class="nav-item active">
+        <a class="nav-link" id= "acc" href="{{path('accueil')}}"> Confirmation Dossier / Payement <span class="sr-only">(current)</span></a>
+      </li>
     
       {% endif %}
     </ul>
- {#  <a id="conn" class="nav-link" href="{{path('connecter')}}">Se connecter</a> #}
-    <a id="conn" class="nav-link" href="{{path('app_login')}}">Se connecter</a>
-  {#  <a id="deconn" class="nav-link" href="{{path('deconnecter')}}">Se déconnecter</a> #}
-  <a id="deconn" class="nav-link" href="{{path('app_logout')}}">Se déconnecter</a> 
 
+ {% if not app.user %}
+    <a id="conn" class="nav-link" href="{{path('app_login')}}">Se connecter</a>
+    {% else %}
+
+  <a id="deconn" class="nav-link" href="{{path('app_logout')}}">Se déconnecter</a> 
+{% endif %}
+      {#  <a id="conn" class="nav-link" href="{{path('connecter')}}">Se connecter</a> #}
+      {#  <a id="deconn" class="nav-link" href="{{path('deconnecter')}}">Se déconnecter</a> #}
   </div>
 </nav>
 <br>
