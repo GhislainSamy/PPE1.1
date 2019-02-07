@@ -44,10 +44,10 @@
                    
 {% if adherent.infosup is not null %}
 
- <a href="{{ path('infosup_show', {'idAdherent': adherent.idAdherent}) }}">Voir</a>
+ <a href="{{ path('useradinfosup_show', {'idAdherent': adherent.idAdherent}) }}">Voir</a>
  {% endif %}
 {%  if adherent.infosup is null  %}
-<a href="{{ path('infosup_edit', {'idAdherent': adherent.idAdherent}) }}">Créer sup</a>
+<a href="{{ path('useradinfosup_edit', {'idAdherent': adherent.idAdherent}) }}">Créer sup</a>
 
 {% endif %}
 
@@ -60,8 +60,8 @@
                     
                 </td>
                 <td>
-                    <a href="{{ path('adherent_show', {'idAdherent': adherent.idAdherent}) }}">Voir/</a>
-                    <a href="{{ path('adherent_edit', {'idAdherent': adherent.idAdherent}) }}">Modifier</a>
+                    <a href="{{ path('useradadherent_show', {'idAdherent': adherent.idAdherent}) }}">Voir/</a>
+                    <a href="{{ path('useradadherent_edit', {'idAdherent': adherent.idAdherent}) }}">Modifier</a>
                 </td>
             </tr>
         {% else %}

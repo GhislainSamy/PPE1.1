@@ -64,7 +64,7 @@
 
     <a href="{{ path('useradherent') }}">Retour a la liste</a>
 
-    <a href="{{ path('adherent_edit', {'idAdherent': adherent.idAdherent}) }}">Modifier</a>
+    <a href="{{ path('useradadherent_edit', {'idAdherent': adherent.idAdherent}) }}">Modifier</a>
 
-    {{ include('admin/_delete_form.html.twig') }}
+    {{ include('user/_delete_form.html.twig') }}
 {% endblock %}

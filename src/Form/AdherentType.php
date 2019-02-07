@@ -30,7 +30,7 @@ class AdherentType extends AbstractType
             ->add('email',TextType::class, array('label' => 'Email'))
            /*  ->add('mdp',PasswordType::class, array('label' => 'Mot de Passe')) */
             ->add('dateCreation',DateTimeType::class, array('label' => 'Date de création'))
-            ->add('save', SubmitType::class)
+            ->add('save', SubmitType::class, array('label' => 'Sauvegarder'  ))
         ;
     }
 
