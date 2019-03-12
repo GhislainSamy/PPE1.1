@@ -55,6 +55,7 @@ nav {
     background-color: #961414;
         padding:15px;
         text-align: center;
+            height: 80px !important;
 }
 
 nav ul {
@@ -67,4 +68,7 @@ nav li {
         padding: 5px 5px 5px 5px;
         margin:0;
         color:#9ca1e2;
+}
+button, input, optgroup, select, textarea {
+    margin: 10px;
 }

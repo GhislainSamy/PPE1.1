@@ -23,6 +23,9 @@
         <li class="nav-item active">
         <a class="nav-link" id= "acc" href="{{path('useradherent')}}"> Liste Profil sportif <span class="sr-only">(current)</span></a>
       </li>
+          <li class="nav-item active">
+        <a class="nav-link" id= "acc" href="{{path('accueil')}}">   évènement <span class="sr-only">(current)</span></a>
+      </li>
           {% endif %}
         {% if is_granted('ROLE_ADMINISTRATEUR') %}
 
@@ -32,16 +35,29 @@
       </a>
       <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
         <a class="dropdown-item" href="{{path('adherents')}}">Afficher tout les adherents</a>
-       
+        <a class="dropdown-item" href="{{path('accueil')}}">Confirmation Dossier / Payement</a>
         
       </div>
+      
+
+
+
+ <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Utilisateur
+      </a>
+      <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+        <a class="dropdown-item" href="{{path('accueil')}}">Afficher tout les Utilisateur</a>
+        <a class="dropdown-item" href="{{path('accueil')}}"> Ajout User</a>
+        
+      </div>
+
     </li>
-     <li class="nav-item active">
-        <a class="nav-link" id= "acc" href="{{path('accueil')}}"> Ajout User <span class="sr-only">(current)</span></a>
+    
+       <li class="nav-item active">
+        <a class="nav-link" id= "acc" href="{{path('accueil')}}"> Gestion évènement <span class="sr-only">(current)</span></a>
       </li>
-          <li class="nav-item active">
-        <a class="nav-link" id= "acc" href="{{path('accueil')}}"> Confirmation Dossier / Payement <span class="sr-only">(current)</span></a>
-      </li>
+      
     
       {% endif %}
     </ul>

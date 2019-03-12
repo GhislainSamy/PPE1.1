@@ -18,6 +18,8 @@ class AdminController extends AbstractController
      */
     public function index()
     {
+        $user = $this->get('security.token_storage')->getToken()->getUser();
+        dump($user);
         return $this->render('admin/index.html.twig', [
             'controller_name' => 'AdminController',
         ]);
