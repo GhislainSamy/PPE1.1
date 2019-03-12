@@ -111,6 +111,11 @@ class Informationsup
      * @ORM\Column(name="dateajout", type="datetime", nullable=true)
      */
     private $dateajout;
+    public function __construct()
+    {
+        $this->dateajout = new \DateTime();
+    }
+
 
     public function getIdInfosup(): ?int
     {

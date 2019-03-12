@@ -21,10 +21,10 @@
         <a class="nav-link" id= "acc" href="{{path('register')}}"> Inscription de sportif<span class="sr-only">(current)</span></a>
       </li>
         <li class="nav-item active">
-        <a class="nav-link" id= "acc" href="{{path('useradherent')}}"> Liste Profil sportif <span class="sr-only">(current)</span></a>
+        <a class="nav-link" id= "acc" href="{{path('useradherent')}}"> Liste Mes Profils sportif <span class="sr-only">(current)</span></a>
       </li>
           <li class="nav-item active">
-        <a class="nav-link" id= "acc" href="{{path('accueil')}}">   évènement <span class="sr-only">(current)</span></a>
+        <a class="nav-link" id= "acc" href="{{path('accueil')}}">   Évènement <span class="sr-only">(current)</span></a>
       </li>
           {% endif %}
         {% if is_granted('ROLE_ADMINISTRATEUR') %}
@@ -55,7 +55,7 @@
     </li>
     
        <li class="nav-item active">
-        <a class="nav-link" id= "acc" href="{{path('accueil')}}"> Gestion évènement <span class="sr-only">(current)</span></a>
+        <a class="nav-link" id= "acc" href="{{path('evenement_index')}}"> Gestion évènement <span class="sr-only">(current)</span></a>
       </li>
       
     
