@@ -16,6 +16,11 @@
       <li class="nav-item active">
         <a class="nav-link" id= "acc" href="{{path('accueil')}}"> Accueil <span class="sr-only">(current)</span></a>
       </li>
+       {% if not app.user %}
+       <li class="nav-item active">
+        <a class="nav-link" id= "acc" href="{{path('accueil')}}"> Évènement <span class="sr-only">(current)</span></a>
+      </li>
+            {% endif %}
         {% if is_granted('ROLE_USER') %}
         <li class="nav-item active">
         <a class="nav-link" id= "acc" href="{{path('register')}}"> Inscription de sportif<span class="sr-only">(current)</span></a>
@@ -25,6 +30,9 @@
       </li>
           <li class="nav-item active">
         <a class="nav-link" id= "acc" href="{{path('accueil')}}">   Évènement <span class="sr-only">(current)</span></a>
+      </li>
+       <li class="nav-item active">
+        <a class="nav-link" id= "acc" href="{{path('evenement_indexadh')}}"> Adh Évènement <span class="sr-only">(current)</span></a>
       </li>
           {% endif %}
         {% if is_granted('ROLE_ADMINISTRATEUR') %}
@@ -54,11 +62,20 @@
 
     </li>
     
-       <li class="nav-item active">
-        <a class="nav-link" id= "acc" href="{{path('evenement_index')}}"> Gestion évènement <span class="sr-only">(current)</span></a>
-      </li>
-      
-    
+
+<li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Gestion Évènement
+      </a>
+      <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+        <a class="dropdown-item" href="{{path('evenement_index')}}">Afficher tout les Évènements</a>
+        <a class="dropdown-item" href="{{path('participer_index')}}"> Afficher tout les Participants</a>
+        
+      </div>
+
+    </li>
+
+
       {% endif %}
     </ul>
 

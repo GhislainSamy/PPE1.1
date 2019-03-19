@@ -72,3 +72,7 @@ nav li {
 button, input, optgroup, select, textarea {
     margin: 10px;
 }
+#evenement{
+    width: 500px;
+
+}

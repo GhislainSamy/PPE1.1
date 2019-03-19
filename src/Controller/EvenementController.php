@@ -27,6 +27,19 @@ class EvenementController extends AbstractController
             'evenements' => $evenements,
         ]);
     }
+    /**
+     * @Route("/adheshow", name="evenement_indexadh", methods={"GET"})
+     */
+    public function indexadh(): Response
+    {
+        $evenements = $this->getDoctrine()
+            ->getRepository(Evenement::class)
+            ->findAll();
+
+        return $this->render('evenement/indexadh.html.twig', [
+            'evenements' => $evenements,
+        ]);
+    }
 
     /**
      * @Route("/new", name="evenement_new", methods={"GET","POST"})

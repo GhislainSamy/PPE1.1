@@ -104,6 +104,11 @@ class Adherent
      * @ORM\Column(name="dateajout", type="datetime", nullable=true)
      */
     private $dateajout;
+    public function __construct()
+    {
+        $this->dateajout = new \DateTime();
+    }
+
 
     /**
      * @var \Informationsup
