@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Controller;
-
+use App\Entity\Evenement;
 use App\Entity\Participer;
 use App\Form\ParticiperType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -28,51 +28,9 @@ class ParticiperController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/newparti", name="adhparticiper_new", methods={"GET","POST"})
-     */
-    public function adpartinew(Request $request): Response
-    {
-        $participer = new Participer();
-        $form = $this->createForm(ParticiperType::class, $participer);
-        $form->handleRequest($request);
+   
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($participer);
-            $entityManager->flush();
-
-            return $this->redirectToRoute('participer_index');
-        }
-
-        return $this->render('participer/new.html.twig', [
-            'participer' => $participer,
-            'form' => $form->createView(),
-        ]);
-    }
-
-    /**
-     * @Route("/new", name="participer_new", methods={"GET","POST"})
-     */
-    public function new(Request $request): Response
-    {
-        $participer = new Participer();
-        $form = $this->createForm(ParticiperType::class, $participer);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($participer);
-            $entityManager->flush();
-
-            return $this->redirectToRoute('participer_index');
-        }
-
-        return $this->render('participer/new.html.twig', [
-            'participer' => $participer,
-            'form' => $form->createView(),
-        ]);
-    }
+  
 
     /**
      * @Route("/{id}", name="participer_show", methods={"GET"})

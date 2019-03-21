@@ -27,7 +27,7 @@
                 <td>{{ evenement.dateDebut ? evenement.dateDebut|date('Y-m-d') : '' }}</td>
                 <td>{{ evenement.dateFin ? evenement.dateFin|date('Y-m-d') : '' }}</td>
                 <td>
-                    <a href="{{ path('adhparticiper_new', {'id': evenement.id}) }}">Participer</a>
+                    <a href="{{ path('participer_new', {'id': evenement.id}) }}">Participer</a>
                 </td>
             </tr>
         {% else %}

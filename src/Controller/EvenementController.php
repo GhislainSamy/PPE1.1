@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Evenement;
+use App\Entity\Participer;
 use App\Form\EvenementType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -63,7 +64,22 @@ class EvenementController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
+  /**
+     * @Route("/{id}", name="participer_new", methods={"GET","POST"})
+     */
+    public function partinew(Request $request,Evenement $evenement): Response
+    {
+        $participer = new Participer();
+        $participer->setIdevenement($evenement);
+        $user = $this->get('security.token_storage')->getToken()->getUser();
+        $participer->setIduser($user);
+      
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($participer);
+            $entityManager->flush();
 
+            return $this->redirectToRoute('evenement_index');
+    }
     /**
      * @Route("/{id}", name="evenement_show", methods={"GET"})
      */
