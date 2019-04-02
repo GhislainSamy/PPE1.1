@@ -78,7 +78,7 @@ class EvenementController extends AbstractController
             $entityManager->persist($participer);
             $entityManager->flush();
 
-            return $this->redirectToRoute('evenement_index');
+            return $this->redirectToRoute('evenement_indexadh');
     }
     /**
      * @Route("/{id}", name="evenement_show", methods={"GET"})
@@ -124,5 +124,5 @@ class EvenementController extends AbstractController
         }
 
         return $this->redirectToRoute('evenement_index');
-    }
+    }   
 }

@@ -1,32 +1,40 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Participer index{% endblock %}
+{% block title %}Vue Participer{% endblock %}
 
 {% block body %}
-    <h1>Participer index</h1>
+    <h1>Vue Participer</h1>
 
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>IdUser</th>
+             {#   <th>Id</th> #}
+                <th>Utilisateur</th>
+                <th>Titre de l'évenement</th>
+                <th>Date de l'évenement</th>
                 <th>actions</th> 
             </tr>
         </thead>
         <tbody>
         {% for participer in participers %}
             <tr>
-                <td>{{ participer.id }}</td>
-                <td>{{ participer.iduser }}</td>
+          {#      <td>{{ participer.id }}</td> #}
+                <td>{{ participer.iduser }}</td> 
+                <td>{{ participer.idevenement.titre }}</td>
+                <td>{{ participer.idevenement.dateDebut ? participer.idevenement.dateDebut|date('Y-m-d') : '' }}</td>
+                 
                 
                 <td>
-                    <a href="{{ path('participer_show', {'id': participer.id}) }}">Voir /</a>
-                    <a href="{{ path('participer_edit', {'id': participer.id}) }}">Modifier</a>
+{#                     <a href="{{ path('participer_show', {'id': participer.id}) }}">Voir /</a>
+ #}                    <a href="{{ path('participer_delete', {'id': participer.id}) }}">Suprimer</a>
+                    
+
+                {#    <a href="{{ path('participer_edit', {'id': participer.id}) }}">Modifier</a> #}
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="2">no records found</td>
+                <td colspan="2">Pas d'Utilisateur de participation.</td>
             </tr>
         {% endfor %}
         </tbody>

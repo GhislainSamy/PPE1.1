@@ -8,8 +8,8 @@
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Titre</th>
+{#                 <th>Id</th>
+ #}                <th>Titre</th>
                 <th>Description</th>
                 <th>Adresse</th>
                 <th>Date de Debut</th>
@@ -20,15 +20,15 @@
         <tbody>
         {% for evenement in evenements %}
             <tr>
-                <td>{{ evenement.id }}</td>
+ {#                <td>{{ evenement.id }}</td> #}
                 <td>{{ evenement.titre }}</td>
                 <td>{{ evenement.description }}</td>
                 <td>{{ evenement.adresse }}</td>
                 <td>{{ evenement.dateDebut ? evenement.dateDebut|date('Y-m-d') : '' }}</td>
                 <td>{{ evenement.dateFin ? evenement.dateFin|date('Y-m-d') : '' }}</td>
                 <td>
-                    <a href="{{ path('evenement_show', {'id': evenement.id}) }}">Voir /</a>
-                    <a href="{{ path('evenement_edit', {'id': evenement.id}) }}">Modifier</a>
+{#                     <a href="{{ path('evenement_show', {'id': evenement.id}) }}">Voir /</a>
+ #}                    <a href="{{ path('evenement_edit', {'id': evenement.id}) }}">Modifier</a>
                 </td>
             </tr>
         {% else %}
