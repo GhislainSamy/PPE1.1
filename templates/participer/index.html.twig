@@ -20,8 +20,8 @@
                 <td>{{ participer.iduser }}</td>
                 
                 <td>
-                    <a href="{{ path('participer_show', {'id': participer.id}) }}">show</a>
-                    <a href="{{ path('participer_edit', {'id': participer.id}) }}">edit</a>
+                    <a href="{{ path('participer_show', {'id': participer.id}) }}">Voir /</a>
+                    <a href="{{ path('participer_edit', {'id': participer.id}) }}">Modifier</a>
                 </td>
             </tr>
         {% else %}
@@ -32,5 +32,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('participer_new') }}">Create new</a>
+ {#   <a href="{{ path('participer_new') }}">Create new</a> #}
 {% endblock %}
