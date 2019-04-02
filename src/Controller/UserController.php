@@ -1,131 +1,99 @@
 <?php
 
 namespace App\Controller;
-use App\Entity\Adherent;
-use App\Entity\Informationsup;
-use App\Form\AdherentType;
-use App\Form\InformationsupType;
-use Doctrine\ORM\EntityManagerInterface;
+
+use App\Entity\User;
+use App\Form\User1Type;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpFoundation\Session\SessionInterface;
+use Symfony\Component\Routing\Annotation\Route;
 
-
-
+/**
+ * @Route("/users")
+ */
 class UserController extends AbstractController
 {
     /**
-     * @Route("/user", name="user")
+     * @Route("/", name="user_index", methods={"GET"})
      */
-    public function index()
+    public function index(): Response
     {
+        $users = $this->getDoctrine()
+            ->getRepository(User::class)
+            ->findAll();
+
         return $this->render('user/index.html.twig', [
-            'controller_name' => 'UserController',
+            'users' => $users,
         ]);
     }
-         /**
-     * @Route("/userad", name="useradherent")
+
+    /**
+     * @Route("/new", name="user_new", methods={"GET","POST"})
      */
-    public function adherentsAction(): Response
+    public function new(Request $request): Response
     {
-        $user = $this->get('security.token_storage')->getToken()->getUser();
-      
-        $adherents = $this->getDoctrine()
-            ->getRepository(Adherent::class)
-            ->findBy(array('iduser' => $user->getId()));
-          
-        return $this->render('user/userad.html.twig', ['adherents' => $adherents]);
-    }
-    
-    
-        /**
-     * @Route(" /userad/{idAdherent}/infosup_edit", name="useradinfosup_edit")
-     */
-    public function infosupAction(Request $request,Adherent $adherent)
-    {
-        $informationsup = new Informationsup();
-        $form = $this->createForm(InformationsupType::class, $adherent->getInfosup());
-          
+        $user = new User();
+        $form = $this->createForm(User1Type::class, $user);
         $form->handleRequest($request);
+
         if ($form->isSubmitted() && $form->isValid()) {
-            $informationsup = $form->getData();
             $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($informationsup);
-           
-           $adherent->setInfosup($informationsup);
-           $entityManager->flush();
+            $entityManager->persist($user);
+            $entityManager->flush();
 
-       }
-           return $this->render('user/infosup.html.twig', ['form' => $form->createView()]    ) ;
-    }
-
-    
-
-    /**
-     * @Route("/userad/{idAdherent}", name="useradadherent_show", methods={"GET"})
-     */
-    public function show(Adherent $adherent): Response
-    {
-        return $this->render('user/show.html.twig', ['adherent' => $adherent]);
-    }
-    
-
-    /**
-     * @Route("/userad/{idAdherent}/edit", name="useradadherent_edit", methods={"GET","POST"})
-     */
-    public function edit(Request $request, Adherent $adherent): Response
-    {
-        $form = $this->createForm(AdherentType::class, $adherent);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-
-
-            $this->getDoctrine()->getManager()->flush();
-
-            return $this->redirectToRoute('adherents', ['idAdherent' => $adherent->getIdAdherent()]);
+            return $this->redirectToRoute('user_index');
         }
 
-        return $this->render('user/edit.html.twig', [
-            'adherent' => $adherent,
+        return $this->render('user/new.html.twig', [
+            'user' => $user,
             'form' => $form->createView(),
         ]);
     }
 
-
-
-
-/**
-     * @Route("/userad/{idAdherent}/show", name="useradinfosup_show", methods={"GET"})
+    /**
+     * @Route("/{id}", name="user_show", methods={"GET"})
      */
-    public function infosupshow(Adherent $adherent): Response
+    public function show(User $user): Response
     {
-        return $this->render('user/infosup_show.html.twig', ['adherent' => $adherent]);
+        return $this->render('user/show.html.twig', [
+            'user' => $user,
+        ]);
     }
 
+    /**
+     * @Route("/{id}/edit", name="user_edit", methods={"GET","POST"})
+     */
+    public function edit(Request $request, User $user): Response
+    {
+        $form = $this->createForm(User1Type::class, $user);
+        $form->handleRequest($request);
 
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->getDoctrine()->getManager()->flush();
 
+            return $this->redirectToRoute('user_index', [
+                'id' => $user->getId(),
+            ]);
+        }
 
+        return $this->render('user/edit.html.twig', [
+            'user' => $user,
+            'form' => $form->createView(),
+        ]);
+    }
 
     /**
-     * @Route("/userad/{idAdherent}", name="useradadherent_delete", methods={"DELETE"})
+     * @Route("/{id}", name="user_delete", methods={"DELETE"})
      */
-    public function delete(Request $request, Adherent $adherent): Response
+    public function delete(Request $request, User $user): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$adherent->getIdAdherent(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete'.$user->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->remove($adherent);
+            $entityManager->remove($user);
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('useradherent');
+        return $this->redirectToRoute('user_index');
     }
-
-
-
-  
- 
-    
 }

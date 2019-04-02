@@ -22,17 +22,22 @@
       </li>
             {% endif %}
         {% if is_granted('ROLE_USER') %}
-        <li class="nav-item active">
-        <a class="nav-link" id= "acc" href="{{path('register')}}"> Inscription de sportif<span class="sr-only">(current)</span></a>
-      </li>
-        <li class="nav-item active">
-        <a class="nav-link" id= "acc" href="{{path('useradherent')}}"> Liste Mes Profils sportif <span class="sr-only">(current)</span></a>
-      </li>
-          <li class="nav-item active">
+        
+
+
+ <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Profil Sportif
+      </a>
+      <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+        <a class="dropdown-item" href="{{path('register')}}">Inscription de sportif</a>
+        <a class="dropdown-item" href="{{path('useradherent')}}">Liste de mes Profils sportif</a>
+        
+         {#  <li class="nav-item active">
         <a class="nav-link" id= "acc" href="{{path('accueil')}}">   Évènement <span class="sr-only">(current)</span></a>
-      </li>
+      </li> #}
        <li class="nav-item active">
-        <a class="nav-link" id= "acc" href="{{path('evenement_indexadh')}}"> Adh Évènement <span class="sr-only">(current)</span></a>
+        <a class="nav-link" id= "acc" href="{{path('evenement_indexadh')}}"> Voir Évènement <span class="sr-only">(current)</span></a>
 
           {% endif %}
         {% if is_granted('ROLE_ADMINISTRATEUR') %}
@@ -55,8 +60,8 @@
         Utilisateur
       </a>
       <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-        <a class="dropdown-item" href="{{path('accueil')}}">Afficher tout les Utilisateur</a>
-        <a class="dropdown-item" href="{{path('accueil')}}"> Ajout User</a>
+        <a class="dropdown-item" href="{{path('user_index')}}">Afficher tout les Utilisateur</a>
+        <a class="dropdown-item" href="{{path('user_new')}}"> Ajout User</a>
         
       </div>
 

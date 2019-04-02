@@ -1,70 +1,58 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Adherent{% endblock %}
+{% block title %}User{% endblock %}
 
 {% block body %}
-    <h1>Adherent</h1>
+    <h1>User</h1>
 
     <table class="table">
         <tbody>
             <tr>
-                <th>IdAdherent</th>
-                <td>{{ adherent.idAdherent }}</td>
+                <th>Id</th>
+                <td>{{ user.id }}</td>
             </tr>
             <tr>
-                <th>Sexe</th>
-                <td>{{ adherent.sexe }}</td>
+                <th>Username</th>
+                <td>{{ user.username }}</td>
             </tr>
             <tr>
-                <th>Nom</th>
-                <td>{{ adherent.nom }}</td>
+                <th>Roles</th>
+                <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
             </tr>
             <tr>
-                <th>Prenom</th>
-                <td>{{ adherent.prenom }}</td>
-            </tr>
-            <tr>
-                <th>Datenaiss</th>
-                <td>{{ adherent.datenaiss ? adherent.datenaiss|date('Y-m-d') : '' }}</td>
-            </tr>
-            <tr>
-                <th>Nationalite</th>
-                <td>{{ adherent.nationalite }}</td>
+                <th>Password</th>
+                <td>{{ user.password }}</td>
             </tr>
             <tr>
                 <th>Telephone</th>
-                <td>{{ adherent.telephone }}</td>
-            </tr>
-            <tr>
-                <th>Adresse</th>
-                <td>{{ adherent.adresse }}</td>
-            </tr>
-            <tr>
-                <th>Cp</th>
-                <td>{{ adherent.cp }}</td>
-            </tr>
-            <tr>
-                <th>Ville</th>
-                <td>{{ adherent.ville }}</td>
+                <td>{{ user.telephone }}</td>
             </tr>
             <tr>
                 <th>Email</th>
-                <td>{{ adherent.email }}</td>
+                <td>{{ user.email }}</td>
             </tr>
-           {#  <tr>
-                <th>Mdp</th>
-                <td>{{ adherent.mdp }}</td>
-            </tr> #}
             <tr>
-                <th>DateCreation</th>
-                <td>{{ adherent.dateCreation ? adherent.dateCreation|date('Y-m-d H:i:s') : '' }}</td>
+                <th>Adresse</th>
+                <td>{{ user.adresse }}</td>
+            </tr>
+            <tr>
+                <th>Ville</th>
+                <td>{{ user.ville }}</td>
+            </tr>
+            <tr>
+                <th>Cp</th>
+                <td>{{ user.cp }}</td>
+            </tr>
+            <tr>
+                <th>Dateajout</th>
+                <td>{{ user.dateajout ? user.dateajout|date('Y-m-d H:i:s') : '' }}</td>
             </tr>
         </tbody>
     </table>
 
-    <a href="{{ path('useradherent') }}">Retour a la liste</a>
+    <a href="{{ path('user_index') }}">back to list</a>
 
-    <a href="{{ path('useradadherent_edit', {'idAdherent': adherent.idAdherent}) }}">Modifier</a>
+    <a href="{{ path('user_edit', {'id': user.id}) }}">edit</a>
 
     {{ include('user/_delete_form.html.twig') }}
 {% endblock %}
