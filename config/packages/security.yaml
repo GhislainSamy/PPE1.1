@@ -48,6 +48,7 @@ security:
          - { path: ^/admin, roles: ROLE_ADMINISTRATEUR }
          - { path: ^/profile, roles: ROLE_USER }
          - { path: ^/adherents, roles: ROLE_ADMINISTRATEUR }
+         
 
         # - { path: ^/admin, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }

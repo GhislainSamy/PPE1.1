@@ -1,7 +1,5 @@
 <?php
-
 namespace App\Controller;
-
 use App\Entity\User;
 use App\Form\User1Type;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -9,8 +7,6 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
-
-
 /**
  * @Route("/users")
  */
@@ -24,12 +20,10 @@ class UserController extends AbstractController
         $users = $this->getDoctrine()
             ->getRepository(User::class)
             ->findAll();
-
         return $this->render('user/index.html.twig', [
             'users' => $users,
         ]);
     }
-
     /**
      * @Route("/new", name="user_new", methods={"GET","POST"})
      */
@@ -38,49 +32,41 @@ class UserController extends AbstractController
         $user = new User();
         $form = $this->createForm(User1Type::class, $user);
         $form->handleRequest($request);
-
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
             $user->setPassword($passwordEncoder->encodePassword($user, $form->get("password")->getData()));
             $user->setRoles(['ROLE_USER']);
             $entityManager->persist($user);
             $entityManager->flush();
-
             return $this->redirectToRoute('user_index');
         }
-
         return $this->render('user/new.html.twig', [
             'user' => $user,
             'form' => $form->createView(),
         ]);
     }
     
-
   /**
-     * @Route("/new", name="admin_new", methods={"GET","POST"})
+     * @Route("/adminnew", name="admin_new", methods={"GET","POST"})
      */
     public function adminnew(Request $request, UserPasswordEncoderInterface $passwordEncoder): Response
     {
         $user = new User();
         $form = $this->createForm(User1Type::class, $user);
         $form->handleRequest($request);
-
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
             $user->setPassword($passwordEncoder->encodePassword($user, $form->get("password")->getData()));
             $user->setRoles(['ROLE_ADMINISTRATEUR']);
             $entityManager->persist($user);
             $entityManager->flush();
-
             return $this->redirectToRoute('user_index');
         }
-
         return $this->render('user/newadmin.html.twig', [
             'user' => $user,
             'form' => $form->createView(),
         ]);
     }
-
     /**
      * @Route("/{id}", name="user_show", methods={"GET"})
      */
@@ -90,7 +76,6 @@ class UserController extends AbstractController
             'user' => $user,
         ]);
     }
-
     /**
      * @Route("/{id}/edit", name="user_edit", methods={"GET","POST"})
      */
@@ -98,21 +83,17 @@ class UserController extends AbstractController
     {
         $form = $this->createForm(User1Type::class, $user);
         $form->handleRequest($request);
-
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
-
             return $this->redirectToRoute('user_index', [
                 'id' => $user->getId(),
             ]);
         }
-
         return $this->render('user/edit.html.twig', [
             'user' => $user,
             'form' => $form->createView(),
         ]);
     }
-
     /**
      * @Route("/{id}", name="user_delete", methods={"DELETE"})
      */
@@ -123,7 +104,6 @@ class UserController extends AbstractController
             $entityManager->remove($user);
             $entityManager->flush();
         }
-
         return $this->redirectToRoute('user_index');
     }
 }
