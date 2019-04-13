@@ -18,7 +18,7 @@
       </li>
        {% if not app.user %}
        <li class="nav-item active">
-        <a class="nav-link" id= "acc" href="{{path('accueil')}}"> Évènement <span class="sr-only">(current)</span></a>
+        <a class="nav-link" id= "acc" href="{{path('evenement_index')}}"> Évènement <span class="sr-only">(current)</span></a>
       </li>
             {% endif %}
         {% if is_granted('ROLE_USER') %}

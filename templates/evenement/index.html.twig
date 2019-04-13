@@ -14,7 +14,9 @@
                 <th>Adresse</th>
                 <th>Date de Debut</th>
                 <th>Date de Fin</th>
+{% if is_granted('ROLE_ADMINISTRATEUR') %}
                 <th>actions</th>
+{% endif %}
             </tr>
         </thead>
         <tbody>
@@ -28,7 +30,11 @@
                 <td>{{ evenement.dateFin ? evenement.dateFin|date('Y-m-d') : '' }}</td>
                 <td>
 {#                     <a href="{{ path('evenement_show', {'id': evenement.id}) }}">Voir /</a>
- #}                    <a href="{{ path('evenement_edit', {'id': evenement.id}) }}">Modifier</a>
+ #}                
+{% if is_granted('ROLE_ADMINISTRATEUR') %}
+    
+                <a href="{{ path('evenement_edit', {'id': evenement.id}) }}">Modifier</a>
+{% endif %}
                 </td>
             </tr>
         {% else %}
@@ -38,6 +44,7 @@
         {% endfor %}
         </tbody>
     </table>
-
+        {% if is_granted('ROLE_ADMINISTRATEUR') %}
     <a href="{{ path('evenement_new') }}">Creer Évènement</a>
+          {% endif %}
 {% endblock %}

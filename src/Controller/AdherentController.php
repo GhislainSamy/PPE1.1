@@ -46,7 +46,7 @@ class AdherentController extends AbstractController
     }
         
     /**
-     * @Route("/userad/register", name="useradadherent_new")
+     * @Route("/userad/newsportif", name="useradadherent_new")
      */
     public function registerAction(Request $request, UserPasswordEncoderInterface $passwordEncoder) {
         // 1) build the form
