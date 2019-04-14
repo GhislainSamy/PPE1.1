@@ -38,7 +38,7 @@ class Evenement
     /**
      * @var string
      *
-     * @ORM\Column(name="adresse", type="string", length=50, nullable=false)
+     * @ORM\Column(name="adresse", type="string", length=100, nullable=false)
      */
     private $adresse;
 

@@ -24,8 +24,8 @@
             <tr>
  {#                <td>{{ evenement.id }}</td> #}
                 <td>{{ evenement.titre }}</td>
-                <td>{{ evenement.description }}</td>
-                <td>{{ evenement.adresse }}</td>
+                <td style="width: 950px;">{{ evenement.description }}</td>
+                <td style="width: 200px;">{{ evenement.adresse }}</td>
                 <td>{{ evenement.dateDebut ? evenement.dateDebut|date('Y-m-d') : '' }}</td>
                 <td>{{ evenement.dateFin ? evenement.dateFin|date('Y-m-d') : '' }}</td>
                 <td>
