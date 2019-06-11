@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <title>{% block title %}URC DRAVEIL!{% endblock %}</title>
         {% block stylesheets %}<link rel="stylesheet" href="{{ asset('build/app.css') }}">{% endblock %}
     </head>
     <body>
@@ -30,8 +30,8 @@
         Profil Sportif
       </a>
       <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-        <a class="dropdown-item" href="{{path('useradadherent_new')}}">Inscription de sportif</a>
-        <a class="dropdown-item" href="{{path('useradherent')}}">Liste de mes Profils sportif</a>
+        <a class="dropdown-item" href="{{path('useradadherent_new')}}">Inscription</a>
+        <a class="dropdown-item" href="{{path('useradherent')}}">Liste de mes Profils sportifs</a>
         </div>
   
 
@@ -40,8 +40,8 @@
         Évènement
       </a>
       <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-        <a class="dropdown-item" href="{{path('evenement_indexadh')}}">Voir les Évènement disponible</a>
-        <a class="dropdown-item" href="{{path('evenement_indexadh')}}">Voir mes participation actuelle</a> 
+        <a class="dropdown-item" href="{{path('evenement_indexadh')}}">Voir les évènements disponibles</a>
+        <a class="dropdown-item" href="{{path('evenement_indexadh')}}">Voir mes participations actuelles</a> 
         
       </div>
 
@@ -68,9 +68,9 @@
         Utilisateur
       </a>
       <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-        <a class="dropdown-item" href="{{path('user_index')}}">Afficher tout les Utilisateur</a>
-        <a class="dropdown-item" href="{{path('user_new')}}"> Ajout User</a>
-        <a class="dropdown-item" href="{{path('admin_new')}}"> Ajout un Admin</a>
+        <a class="dropdown-item" href="{{path('user_index')}}">Afficher tout les Utilisateurs</a>
+        <a class="dropdown-item" href="{{path('user_new')}}"> Ajouter un Utilisateur</a>
+        <a class="dropdown-item" href="{{path('admin_new')}}"> Ajouter un Administrateur</a>
         
       </div>
 

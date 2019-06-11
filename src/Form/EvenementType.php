@@ -7,6 +7,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -17,7 +18,7 @@ class EvenementType extends AbstractType
     {
         $builder
             ->add('titre',TextType::class, array('label' => 'Titre'  ))
-            ->add('description',TextType::class, array('label' => 'Description'  ))
+            ->add('description',TextareaType::class, array('label' => 'Description'  ))
             ->add('adresse',TextType::class, array('label' => 'Adresse'  ))
             ->add('dateDebut',DateTimeType::class, array('label' => 'Date de debut'  ))
             ->add('dateFin',DateTimeType::class, array('label' => 'Date de fin'  ))

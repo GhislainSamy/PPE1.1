@@ -8,6 +8,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 
@@ -19,7 +20,7 @@ class InformationsupType extends AbstractType
             ->add('typeMailing',TextType::class, array('label' => 'Type Mailing'  ))
             ->add('accident',TextType::class, array('label' => 'Accident'  ))
             ->add('droitimage',TextType::class, array('label' => 'Droit a limage'  ))
-            ->add('infocomplem',TextType::class, array('label' => 'Info Complementaire'  ))
+            ->add('infocomplem',TextareaType::class, array('label' => 'Info Complementaire'  ))
             ->add('assurance',TextType::class, array('label' => 'Assurance'  ))
             ->add('optionassurance',TextType::class, array('label' => 'Option Assurance'  ))
             ->add('typePaiement',TextType::class, array('label' => 'Type de paiement'  ))

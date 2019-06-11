@@ -24,7 +24,11 @@ class EvenementController extends AbstractController
             ->getRepository(Evenement::class)
             ->findAll();
 
+            $nbevenement = $this->getDoctrine()
+            ->getRepository(Evenement::class)
+            ->countEvenement();
         return $this->render('evenement/index.html.twig', [
+            'nbevenement' => $nbevenement['COUNT(*)'],
             'evenements' => $evenements,
         ]);
     }

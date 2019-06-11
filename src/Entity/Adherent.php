@@ -9,6 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="adherent", indexes={@ORM\Index(name="iduser", columns={"iduser"}), @ORM\Index(name="infosup", columns={"infosup"})})
  * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\AdherentRepository")
  */
 class Adherent
 {
