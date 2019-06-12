@@ -15,11 +15,22 @@ class UserController extends AbstractController
     /**
      * @Route("/", name="user_index", methods={"GET"})
      */
-    public function index(): Response
+    public function index(Request $request): Response
     {
         $users = $this->getDoctrine()
             ->getRepository(User::class)
             ->findAll();
+
+            if(isset($_GET['user'])){
+                $users = $this->getDoctrine()
+                ->getRepository(User::class)
+          ##      ->findby(["roles"=>"ROLE_USER"]);
+            ->rechuser();
+
+                return $this->render('user/index.html.twig', [
+                    'users' => $users,
+                ]);
+            }
         return $this->render('user/index.html.twig', [
             'users' => $users,
         ]);

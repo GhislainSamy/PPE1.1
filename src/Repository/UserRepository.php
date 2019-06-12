@@ -18,6 +18,14 @@ class UserRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, User::class);
     }
+  ##  public function rechUser(){
+  ##      $conn = $this->getEntityManager()->getConnection();
+   ##     $sql = 'SELECT * FROM `user` WHERE `roles`LIKE '%ROLE_ADMINISTRATEUR%'';
+  ##      $stmt = $conn->prepare($sql);
+   ##     $stmt->execute();
+        
+  ##      return $stmt->fetchAll();
+ ##   }
 
     // /**
     //  * @return User[] Returns an array of User objects
